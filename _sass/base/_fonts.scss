@@ -1,0 +1,38 @@
+$largeHeader: 5.38836em;
+$mediumHeader:4.23607em;
+$sectionHeader: 3.33019em;
+$smallHeader: 2.61803em;
+
+%helvetica{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+%lato{
+	font-family: 'Lato', sans-serif;
+}
+%slabo{
+  font-family: 'Slabo 27px', serif;
+}
+%volkorn{
+  font-family: 'Vollkorn', serif;
+}
+%raleway{
+	font-family: "Raleway", sans-serif;
+	font-weight: 100;
+}
+%josefin{
+	font-family: 'Josefin Slab', serif;
+	font-weight: 400;
+}
+%crimson{
+	font-family: 'Crimson Text', serif;
+	font-weight: 400;
+}
+
+$modScaleUtil: 1.5;
+$modScale: $modScaleUtil * 1em;
+
+@mixin ms($s: 1) {
+	$t: $s * $modScale;
+	font-size: $t;
+	line-height: 1.5;
+}

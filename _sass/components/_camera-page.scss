@@ -1,0 +1,9 @@
+.camera-page {
+
+    &--cart-button {
+        position: absolute;
+        top: $container-padding;
+        right: $container-padding;
+        z-index: 2;
+    }
+}

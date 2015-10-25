@@ -1,0 +1,9 @@
+@mixin size($height, $width: auto) {
+  @if $width == "auto" {
+    height: $height;
+    width: $height;
+  } @else {
+    height: $height;
+    width: $width;
+  }
+}

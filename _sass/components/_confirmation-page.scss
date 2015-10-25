@@ -1,0 +1,80 @@
+%shadow {
+    box-shadow: 10px 10px 20px rgba(black, 0.2);
+}
+
+%button-group {
+    margin-top: $vertical-margin;
+    font-size: 2rem;
+    text-align: left;
+    position: relative;
+}
+
+%confirmation-page--item {
+    margin-top: $vertical-margin;
+    font-size: 2rem;
+}
+
+.confirmation-page {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity $cubic-slow, transform $cubic-slow;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: $secondary-gradient;
+    text-align: center;
+
+    &.open {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+
+    &--item-name {
+        margin-top: $vertical-margin;
+    }
+
+    &--item-image {
+        border-radius: .5rem;
+        height: 10rem;
+        width: 10rem;
+        // background-image: url("../img/checkitout.svg");
+        background-size: cover;
+        background-position: center;
+        display: inline-block;
+        @extend %shadow;
+    }
+
+    &--item-cost {
+        @extend %confirmation-page--item;
+    }
+
+    &--item-count {
+        @extend %confirmation-page--item;
+    }
+
+    &--button-group {
+        @extend %button-group;
+
+        &--CENTERED {
+            @extend %button-group;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+        }
+    }
+
+    &--confirm-button {
+        position: absolute;
+        left: $container-padding;
+    }
+
+    &--cancel-button {
+        position: absolute;
+        right: $container-padding;
+    }
+}
+

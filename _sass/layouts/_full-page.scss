@@ -1,0 +1,25 @@
+$mid: 36rem;
+body {
+    overflow: none;
+}
+
+._full-page {
+    @include size(100vh, 100%);
+    
+    &--message {
+        @include center("both");
+        @include size(auto, 80%);
+        
+        @media screen and (min-width: $mid) {
+            @include center("vertical");
+            @include size(auto, 70%);
+            float: right;
+        }
+    }
+
+    &--cart-icon {
+        position: absolute;
+        top: 4rem;
+        right: 4rem;
+    }
+}

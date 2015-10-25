@@ -1,0 +1,30 @@
+$primary-text-color: #444;
+$gradient: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+$secondary-gradient: linear-gradient(90deg, $red 0%, $maroon 100%);
+$vertical-margin: 2rem;
+$container-padding: 3rem;
+$primary-bg: #fbf5e9;
+
+.base {
+    &--h1 {
+        
+    }
+    &--a {
+      background: $gradient;
+      box-sizing: border-box;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    &--action {
+      background: $gradient !important;
+    }
+}
+
+
+body{ 
+	@extend %helvetica;
+	background: $secondary-gradient;
+	color: $primary-text-color;
+	margin: 0; padding: 0;
+}
