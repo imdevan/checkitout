@@ -81,7 +81,10 @@ var self, confirmationPage = {
     },
     update: function () {
         $(".item-count--value").text(this.vars.confirmQuantity);
-        this.vars.confirmCost.text(this.vars.confirmQuantity * this.vars.confirmItemCost);
+        var num = this.vars.confirmQuantity * this.vars.confirmItemCost;
+        this.vars.confirmCost.text(
+            parseFloat(Math.round(num * 100) / 100).toFixed(2)
+        );
     },
     increaseQuantity: function (count) {
         this.vars.confirmQuantity = this.vars.confirmQuantity + count;
@@ -106,12 +109,12 @@ var self, confirmationPage = {
         self = this.vars;
     },
     confirm: function () {
-        console.log(inventory[this.vars.confirmCode], parseInt(this.vars.confirmQuantity));
-
+        var numutil = inventory[this.vars.confirmCode].cost * this.vars.confirmQuantity;
+        var num = parseFloat(Math.round(numutil * 100) / 100).toFixed(2);
         cart[this.vars.confirmCode] = {
             item: inventory[this.vars.confirmCode],
             quantity: this.vars.confirmQuantity,
-            totalCost: parseInt(inventory[this.vars.confirmCode].cost) * parseInt(this.vars.confirmQuantity)
+            totalCost: num
         };
         var message = this.vars.confirmQuantity + " " +
             cart[this.vars.confirmCode].item.name + " added to cart!"
@@ -122,9 +125,10 @@ var self, confirmationPage = {
     },
     set: function (item) {
         var bgurl = 'url(' + item.img + ')';
+        var num = parseFloat(Math.round(item.cost * 100) / 100).toFixed(2);
         this.vars.confirmItemCost = item.cost;
         this.vars.confirmName.text(item.name);
-        this.vars.confirmCost.text(item.cost);
+        this.vars.confirmCost.text(num);
         this.vars.confirmCount.text(item.quantity);
         this.vars.confirmImg.css('background-image', bgurl);
     }
@@ -153,6 +157,7 @@ var mrToast = {
 };
 
 var addToSelector = function (item) {
+    var num = parseFloat(Math.round(item.totalCost * 100) / 100).toFixed(2);
     var elm = '<div class="cart-page--item">' +
             '<div class="cart-page--item-name">' +
                 item.item.name +
@@ -161,7 +166,7 @@ var addToSelector = function (item) {
                 item.quantity +
             '</div>' +
             '<div class="cart-page--item-cost">' +
-                item.totalCost +
+                num +
             '</div>' +
         '</div>';
         elm = $.parseHTML( elm )[0];
@@ -176,6 +181,7 @@ var cartPage = {
         for(var key in cart) {
             console.log( cart[key].totalCost);
             this.totalCost = this.totalCost + cart[key].totalCost;
+            this.totalCost = parseFloat(Math.round(this.totalCost * 100) / 100).toFixed(2);
             addToSelector(cart[key]);
         }
         this.page.addClass("open");
@@ -188,7 +194,8 @@ var cartPage = {
 };
 
 var ajaxSuccess = function () {
-    var message = $.parseHTML( "<p>Purchase Complete!</p> <p>Your total is $" + cartPage.totalCost +"</p>");
+    var num = parseFloat(Math.round(cartPage.totalCost * 100) / 100).toFixed(2);
+    var message = $.parseHTML( "<p>Purchase Complete!</p> <p>Your total is $" + num +"</p>");
 
     cart = {};
     cartPage.totalCost = 0;
