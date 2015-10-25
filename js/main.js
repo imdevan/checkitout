@@ -181,7 +181,6 @@ var cartPage = {
         for(var key in cart) {
             console.log( cart[key].totalCost);
             this.totalCost = this.totalCost + cart[key].totalCost;
-            this.totalCost = parseFloat(Math.round(this.totalCost * 100) / 100).toFixed(2);
             addToSelector(cart[key]);
         }
         this.page.addClass("open");
@@ -194,8 +193,7 @@ var cartPage = {
 };
 
 var ajaxSuccess = function () {
-    var num = parseFloat(Math.round(cartPage.totalCost * 100) / 100).toFixed(2);
-    var message = $.parseHTML( "<p>Purchase Complete!</p> <p>Your total is $" + num +"</p>");
+    var message = $.parseHTML( "<p>Purchase Complete!</p> <p>Your total is $" + cartPage.totalCost +"</p>");
 
     cart = {};
     cartPage.totalCost = 0;
