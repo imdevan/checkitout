@@ -110,10 +110,10 @@ var self, confirmationPage = {
 
         cart[this.vars.confirmCode] = {
             item: inventory[this.vars.confirmCode],
-            quantity: this.vars.confirmQuantity, 
+            quantity: this.vars.confirmQuantity,
             totalCost: parseInt(inventory[this.vars.confirmCode].cost) * parseInt(this.vars.confirmQuantity)
         };
-        var message = this.vars.confirmQuantity + " " + 
+        var message = this.vars.confirmQuantity + " " +
             cart[this.vars.confirmCode].item.name + " added to cart!"
         mrToast.show(message);
     },
@@ -141,7 +141,7 @@ var mrToast = {
             mrToast.toastBox.removeClass('open');
         }, 2000);
 
-        setTimeout(function () { 
+        setTimeout(function () {
             if($('.confirmation-page').hasClass('open')) {
                 confirmationPage.close();
             }
@@ -155,7 +155,7 @@ var mrToast = {
 var addToSelector = function (item) {
     var elm = '<div class="cart-page--item">' +
             '<div class="cart-page--item-name">' +
-                item.item.name + 
+                item.item.name +
             '</div>' +
             '<div class="cart-page--item-count">' +
                 item.quantity +
@@ -168,7 +168,7 @@ var addToSelector = function (item) {
         cartPage.list.append(elm);
 }
 
-var cartPage = { 
+var cartPage = {
     page: $('.cart-page'),
     list: $(".cart-page--item-list"),
     totalCost: 0,
@@ -229,7 +229,7 @@ $(document).on('click touchstart', ".cart-page--cancel-button button", function 
 $(document).on('click touchstart', ".cart-page--confirm-button button", function () {
     $.ajax({
       type: "POST",
-      url: "https://104.131.64.46/checkitout",
+      url: "http://127.0.0.1:8000/checkitout/api/processTransaction",
       data: cart,
       success: ajaxSuccess(),
       dataType: "json"
