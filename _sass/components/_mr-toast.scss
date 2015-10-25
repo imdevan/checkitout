@@ -3,7 +3,7 @@ $mrtoast-bg: $secondary-gradient;
 .mr-toast {
 
     &.open {
-        transform: translateY(-50%) translateX(-50%);
+        transform: translateY(-25%);
         opacity: 1;
     }
 
@@ -18,14 +18,14 @@ $mrtoast-bg: $secondary-gradient;
 
     transition: opacity $cubic-slower, transform $cubic-slower;
 
-    background: $mrtoast-bg;
+    background: $primary-bg;
 
     @extend %shadow;
     top: 50%;
-    left: 50%;
-    transform: translateY(1000%) translateX(-50%);
+    transform: translateY(1000%);
     position: fixed;
     @extend .base--a;
+    width: 100vw;
 
     &--message {
             background-image: linear-gradient(90deg,#2ecc71 0%,#27ae60 100%);

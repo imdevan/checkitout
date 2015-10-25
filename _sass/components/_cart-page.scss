@@ -1,0 +1,72 @@
+
+.cart-page {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity $cubic-slow, transform $cubic-slow;
+    position: fixed;
+    top: 0;
+    z-index: 3;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: $secondary-gradient;
+    text-align: center;
+
+    color: white;
+
+    &.open {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    &--button-group {
+        @extend %button-group;
+
+        &--CENTERED {
+            @extend %button-group;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        &--FLOAT {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &--item {
+        width: 80%;
+        margin: auto;
+        border-top: 1px solid rgba(white, .5);
+        padding: $container-padding;
+        align-items: center;
+        display: flex;
+    }
+
+    &--item-name {
+        display: inline-block;
+        flex: 1;
+    }
+
+    &--item-count {
+        display: inline-block;
+        flex: 1;
+    }
+    
+    &--item-cost {
+        display: inline-block;
+        flex: 1;
+    }
+
+    &--confirm-button {
+        position: absolute;
+        left: $container-padding;
+    }
+
+    &--cancel-button {
+        position: absolute;
+        right: $container-padding;
+    }
+}
